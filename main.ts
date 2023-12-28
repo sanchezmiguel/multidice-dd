@@ -9,14 +9,21 @@ input.onButtonPressed(Button.B, function () {
     display_dice_selected()
 })
 input.onGesture(Gesture.Shake, function () {
+    display_rolling()
     roll_dice()
 })
 function display_dice_selected () {
     basic.showString("d" + dice_types[dice_type])
 }
+function display_rolling () {
+    for (let index = 0; index < 4; index++) {
+        basic.showIcon(IconNames.Diamond)
+        basic.pause(100)
+        basic.showIcon(IconNames.SmallDiamond)
+        basic.pause(100)
+    }
+}
 function roll_dice () {
-    basic.clearScreen()
-    basic.pause(200)
     dice_rolled = randint(1, dice_types[dice_type])
     basic.showNumber(dice_rolled)
 }
